@@ -1,7 +1,9 @@
 from random import randint
+from graphic_arts.start_game_banner import run_screensaver
 
 
 def attack(char_name: str, char_class: str) -> str:
+    """Запускает атаку."""
     if char_class == 'warrior':
         damage = randint(8, 13)
         return f'{char_name} нанёс урон противнику равный {damage}'
@@ -14,6 +16,7 @@ def attack(char_name: str, char_class: str) -> str:
 
 
 def defence(char_name: str, char_class: str) -> str:
+    """Запускает защиту."""
     if char_class == 'warrior':
         damage = randint(15, 20)
         return f'{char_name} блокировал {damage}'
@@ -26,6 +29,7 @@ def defence(char_name: str, char_class: str) -> str:
 
 
 def special(char_name: str, char_class: str) -> str:
+    """Запускает примениние специального умения."""
     if char_class == 'warrior':
         return f'{char_name} применил специальное умение «Выносливость 105»'
     if char_class == 'mage':
@@ -35,6 +39,11 @@ def special(char_name: str, char_class: str) -> str:
 
 
 def start_training(char_name: str, char_class: str) -> str:
+    """Запускает тренировку с различными возможностями.
+    Атаковать, защититься, применить
+    специальное умение или
+    вовсе пропустить её.
+    """
     if char_class == 'warrior':
         print(f'{char_name}, ты Воитель — отличный боец ближнего боя.')
     if char_class == 'mage':
@@ -60,6 +69,7 @@ def start_training(char_name: str, char_class: str) -> str:
 
 
 def choice_char_class() -> str:
+    """Запускает выбор класса."""
     approve_choice: str = None
     char_class: str = None
     while approve_choice != 'y':
@@ -83,6 +93,8 @@ def choice_char_class() -> str:
 
 
 def main() -> None:
+    """Запускает анимацию, создание персонажа и тренировку."""
+    run_screensaver()
     print('Приветствую тебя, искатель приключений!')
     print('Прежде чем начать игру...')
     char_name: str = input('...назови себя: ')
@@ -92,6 +104,7 @@ def main() -> None:
     print('Воитель, Маг, Лекарь')
     char_class: str = choice_char_class()
     print(start_training(char_name, char_class))
-
-
-main()
+ 
+  
+if __name__ == '__main__':
+    main()
